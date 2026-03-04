@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwZjE3MmEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMWUyOTNiIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iNTYiIGhlaWdodD0iNTYiIHJ4PSIxMiIgZmlsbD0idXJsKCNiZykiLz4KICA8cGF0aCBkPSJNMjggMjMgTDM2IDIxIiBzdHJva2U9IiMyMmM1NWUiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2UtZGFzaGFycmF5PSI0IDQiIGZpbGw9Im5vbmUiIHN0cm9rZS1kYXNob2Zmc2V0PSI4Ij4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InN0cm9rZS1kYXNob2Zmc2V0IiBmcm9tPSI4IiB0bz0iMCIgZHVyPSIxLjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogIDwvcGF0aD4KICA8cGF0aCBkPSJNMjEgMjggTDM3IDM4IiBzdHJva2U9IiMyMmM1NWUiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2UtZGFzaGFycmF5PSI0IDQiIGZpbGw9Im5vbmUiIHN0cm9rZS1kYXNob2Zmc2V0PSI4Ij4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InN0cm9rZS1kYXNob2Zmc2V0IiBmcm9tPSI4IiB0bz0iMCIgZHVyPSIxLjRzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogIDwvcGF0aD4KICA8cGF0aCBkPSJNNDMgMjYgTDM3IDM4IiBzdHJva2U9IiMyMmM1NWUiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2UtZGFzaGFycmF5PSI0IDQiIGZpbGw9Im5vbmUiIHN0cm9rZS1kYXNob2Zmc2V0PSI4Ij4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InN0cm9rZS1kYXNob2Zmc2V0IiBmcm9tPSI4IiB0bz0iMCIgZHVyPSIxLjZzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogIDwvcGF0aD4KICA8cmVjdCB4PSIxNCIgeT0iMTgiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxMCIgcng9IjIiIGZpbGw9IiM0ZjQ2ZTUiLz4KICA8cmVjdCB4PSIzNiIgeT0iMTYiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxMCIgcng9IjIiIGZpbGw9IiMwNmI2ZDQiLz4KICA8cmVjdCB4PSIzMCIgeT0iMzgiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxMCIgcng9IjIiIGZpbGw9IiNmNTllMGIiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAuNDsxIiBkdXI9IjIuNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgPC9yZWN0Pgo8L3N2Zz4=">
 <meta charset="UTF-8">
 <title>ArchSys</title>
 
@@ -513,7 +514,7 @@ function renameInline(id,el){const nd=S.nodes.find(n=>n.id===id);if(!nd)return;c
 function ndDown(e,nd){if(e.target.classList.contains('port')||e.button!==0)return;e.stopPropagation();e.preventDefault();if(!e.shiftKey&&!S.sel.has(nd.id))S.sel.clear();S.sel.add(nd.id);S.selConn=null;S.selBox=null;updSelVis();renderAllBoxes();renderProps();const sp={};S.sel.forEach(id=>{const n=S.nodes.find(x=>x.id===id);if(n)sp[id]={x:n.x,y:n.y};});const sx=e.clientX,sy=e.clientY;let moved=false;const mv=ev=>{const dx=(ev.clientX-sx)/S.scale,dy=(ev.clientY-sy)/S.scale;if(Math.abs(dx)+Math.abs(dy)>2)moved=true;S.sel.forEach(id=>{const n=S.nodes.find(x=>x.id===id);if(n&&sp[id]){n.x=Math.round(sp[id].x+dx);n.y=Math.round(sp[id].y+dy);}const e2=document.getElementById('n_'+id);if(e2){const n=S.nodes.find(x=>x.id===id);e2.style.left=(n.x*S.scale+S.tx).toFixed(1)+'px';e2.style.top=(n.y*S.scale+S.ty).toFixed(1)+'px';}});renderAllConns();};const up=()=>{document.removeEventListener('mousemove',mv);document.removeEventListener('mouseup',up);if(moved)sv();renderAllNodes();renderAllConns();renderProps();};document.addEventListener('mousemove',mv);document.addEventListener('mouseup',up);}
 
 /* ── PORT DRAG ───────────────────────────────────────────────────────── */
-function portDown(e,fromNd){e.stopPropagation();e.preventDefault();const area=document.getElementById('cw').getBoundingClientRect();const tl=document.getElementById('tl');tl.style.display='block';const fromPort=parseInt(e.currentTarget.dataset.port||'1');const fp=getPortXY(fromNd,fromPort);const sx=fp.x*S.scale+S.tx,sy=fp.y*S.scale+S.ty;tl.setAttribute('x1',sx);tl.setAttribute('y1',sy);tl.setAttribute('x2',sx);tl.setAttribute('y2',sy);const mv=ev=>{tl.setAttribute('x2',ev.clientX-area.left);tl.setAttribute('y2',ev.clientY-area.top);};const up=ev=>{document.removeEventListener('mousemove',mv);document.removeEventListener('mouseup',up);tl.style.display='none';const mx=(ev.clientX-area.left-S.tx)/S.scale,my=(ev.clientY-area.top-S.ty)/S.scale;const target=S.nodes.find(n=>{const w=n.type==='note'?190:162,h=nH(n)+24;return n.id!==fromNd.id&&mx>=n.x&&mx<=n.x+w&&my>=n.y&&my<=n.y+h;});if(target){const toPort=fromPort===0?1:0;mkConn(fromNd.id,target.id,fromPort,toPort);}};document.addEventListener('mousemove',mv);document.addEventListener('mouseup',up);}
+function portDown(e,fromNd){e.stopPropagation();e.preventDefault();const area=document.getElementById('cw').getBoundingClientRect();const tl=document.getElementById('tl');tl.style.display='block';const fromPort=parseInt(e.currentTarget.dataset.port||'1');const fp=getPortXY(fromNd,fromPort);const sx=fp.x*S.scale+S.tx,sy=fp.y*S.scale+S.ty;tl.setAttribute('x1',sx);tl.setAttribute('y1',sy);tl.setAttribute('x2',sx);tl.setAttribute('y2',sy);const mv=ev=>{tl.setAttribute('x2',ev.clientX-area.left);tl.setAttribute('y2',ev.clientY-area.top);};const up=ev=>{document.removeEventListener('mousemove',mv);document.removeEventListener('mouseup',up);tl.style.display='none';const mx=(ev.clientX-area.left-S.tx)/S.scale,my=(ev.clientY-area.top-S.ty)/S.scale;const target=S.nodes.find(n=>{const w=nodeW(n),h=nH(n)+24;return n.id!==fromNd.id&&mx>=n.x&&mx<=n.x+w&&my>=n.y&&my<=n.y+h;});if(target){const toPort=fromPort===0?1:0;mkConn(fromNd.id,target.id,fromPort,toPort);}};document.addEventListener('mousemove',mv);document.addEventListener('mouseup',up);}
 
 /* ── MODE ────────────────────────────────────────────────────────────── */
 function setMode(m){S.mode=m;document.getElementById('mode-select').classList.toggle('active',m==='select');document.getElementById('mode-box').classList.toggle('active',m==='box');document.getElementById('cw').style.cursor=m==='box'?'crosshair':'default';}
@@ -575,7 +576,7 @@ wrap.addEventListener('dblclick',e=>{if(S.mode!=='select')return;if(e.target!==w
 
 function applyTx(){S.nodes.forEach(n=>{const el=document.getElementById('n_'+n.id);if(el){el.style.left=(n.x*S.scale+S.tx).toFixed(1)+'px';el.style.top=(n.y*S.scale+S.ty).toFixed(1)+'px';el.style.transform=`scale(${S.scale})`;el.style.transformOrigin='top left';}});S.boxes.forEach(b=>{const el=document.getElementById('b_'+b.id);if(el){el.style.left=(b.x*S.scale+S.tx).toFixed(1)+'px';el.style.top=(b.y*S.scale+S.ty).toFixed(1)+'px';el.style.width=(b.w*S.scale).toFixed(1)+'px';el.style.height=(b.h*S.scale).toFixed(1)+'px';}});}
 function doZoom(d){S.scale=Math.max(0.15,Math.min(2.5,S.scale+d));applyTx();drawGrid();renderAllConns();document.getElementById('zlbl').textContent=Math.round(S.scale*100)+'%';}
-function zoomFit(){const all=[...S.nodes,...S.boxes];if(!all.length)return;const w=document.getElementById('cw').getBoundingClientRect();let x0=Infinity,y0=Infinity,x1=-Infinity,y1=-Infinity;S.nodes.forEach(n=>{const nw=n.type==='note'?190:162,nh2=nH(n)+20;x0=Math.min(x0,n.x);y0=Math.min(y0,n.y);x1=Math.max(x1,n.x+nw);y1=Math.max(y1,n.y+nh2);});S.boxes.forEach(b=>{x0=Math.min(x0,b.x);y0=Math.min(y0,b.y);x1=Math.max(x1,b.x+b.w);y1=Math.max(y1,b.y+b.h);});S.scale=Math.max(0.15,Math.min(1.5,Math.min((w.width-80)/(x1-x0),(w.height-80)/(y1-y0))));S.tx=(w.width-80-(x1-x0)*S.scale)/2+40-x0*S.scale;S.ty=(w.height-80-(y1-y0)*S.scale)/2+40-y0*S.scale;applyTx();drawGrid();renderAllConns();document.getElementById('zlbl').textContent=Math.round(S.scale*100)+'%';}
+function zoomFit(){const all=[...S.nodes,...S.boxes];if(!all.length)return;const w=document.getElementById('cw').getBoundingClientRect();let x0=Infinity,y0=Infinity,x1=-Infinity,y1=-Infinity;S.nodes.forEach(n=>{if(n.type==='sticker')return;const nw=nodeW(n),nh2=nH(n)+20;x0=Math.min(x0,n.x);y0=Math.min(y0,n.y);x1=Math.max(x1,n.x+nw);y1=Math.max(y1,n.y+nh2);});S.boxes.forEach(b=>{x0=Math.min(x0,b.x);y0=Math.min(y0,b.y);x1=Math.max(x1,b.x+b.w);y1=Math.max(y1,b.y+b.h);});S.scale=Math.max(0.15,Math.min(1.5,Math.min((w.width-80)/(x1-x0),(w.height-80)/(y1-y0))));S.tx=(w.width-80-(x1-x0)*S.scale)/2+40-x0*S.scale;S.ty=(w.height-80-(y1-y0)*S.scale)/2+40-y0*S.scale;applyTx();drawGrid();renderAllConns();document.getElementById('zlbl').textContent=Math.round(S.scale*100)+'%';}
 function zoomReset(){S.scale=1;S.tx=60;S.ty=60;applyTx();drawGrid();renderAllConns();document.getElementById('zlbl').textContent='100%';}
 function toggleGrid(){S.gridOn=!S.gridOn;if(!S.gridOn)document.getElementById('gc').getContext('2d').clearRect(0,0,9999,9999);else drawGrid();}
 function drawGrid(){if(!S.gridOn)return;const c=document.getElementById('gc'),ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);const gs=28*S.scale,ox=((S.tx%gs)+gs)%gs,oy=((S.ty%gs)+gs)%gs;ctx.fillStyle='rgba(37,40,54,.85)';for(let x=ox;x<c.width;x+=gs)for(let y=oy;y<c.height;y+=gs){ctx.beginPath();ctx.arc(x,y,1,0,Math.PI*2);ctx.fill();}}
@@ -730,7 +731,7 @@ function exportSVG(){
   if(!S.nodes.length&&!S.boxes.length){alert('Nothing to export.');return;}
   // Calculate bounds
   let x0=Infinity,y0=Infinity,x1=-Infinity,y1=-Infinity;
-  S.nodes.forEach(n=>{const nw=n.type==='note'?190:162,nh2=nH(n)+20;x0=Math.min(x0,n.x);y0=Math.min(y0,n.y);x1=Math.max(x1,n.x+nw);y1=Math.max(y1,n.y+nh2);});
+  S.nodes.forEach(n=>{if(n.type==='sticker')return;const nw=nodeW(n),nh2=nH(n)+20;x0=Math.min(x0,n.x);y0=Math.min(y0,n.y);x1=Math.max(x1,n.x+nw);y1=Math.max(y1,n.y+nh2);});
   S.boxes.forEach(b=>{x0=Math.min(x0,b.x);y0=Math.min(y0,b.y);x1=Math.max(x1,b.x+b.w);y1=Math.max(y1,b.y+b.h);});
   const pad=32,W=x1-x0+pad*2,H=y1-y0+pad*2;
   const ox=pad-x0,oy=pad-y0;
@@ -757,21 +758,49 @@ function exportSVG(){
     const c1x=fx+(fromRight?bend:-bend),c1y=fy,c2x=tx2+(toLeft?-bend:bend),c2y=ty2;
     const col=conn.stroke||'#6b7280';
     const dash=conn.dash==='dashed'?'stroke-dasharray="6,4"':conn.dash==='dotted'?'stroke-dasharray="2,4"':'';
-    svg+=`<path d="M${fx},${fy} C${c1x},${fy} ${c2x},${ty2} ${tx2},${ty2}" fill="none" stroke="${col}" stroke-width="1.5" ${dash}/>`;
+    svg+=`<path d="M${fx},${fy} C${c1x},${c1y} ${c2x},${c2y} ${tx2},${ty2}" fill="none" stroke="${col}" stroke-width="${conn.width||1.5}" ${dash}/>`;
     if(conn.label){const mx=(fx+tx2)/2,my=(fy+ty2)/2-10;const tw2=conn.label.length*5.5+14;svg+=`<rect x="${mx-tw2/2}" y="${my-10}" width="${tw2}" height="16" rx="4" fill="#181b24"/>`;svg+=`<text x="${mx}" y="${my}" text-anchor="middle" dominant-baseline="middle" font-size="9" fill="${col}">${eh(conn.label)}</text>`;}
   });
   // Nodes
   S.nodes.forEach(n=>{
+    if(n.type==='sticker'){
+      const nx=n.x+ox,ny=n.y+oy;
+      svg+=`<text x="${nx+28}" y="${ny+42}" font-size="36" text-anchor="middle">${n.emoji||'⭐'}</text>`;
+      return;
+    }
+    if(n.type==='numcircle'){
+      const cx=n.x+ox+26,cy=n.y+oy+26;
+      const nc=n.color||'#ef4444';
+      svg+=`<circle cx="${cx}" cy="${cy}" r="22" fill="${nc}"/>`;
+      svg+=`<text x="${cx}" y="${cy+1}" text-anchor="middle" dominant-baseline="middle" font-size="16" font-weight="700" fill="#fff">${eh(n.numValue||'1')}</text>`;
+      return;
+    }
     const nx=n.x+ox,ny=n.y+oy;
-    const nw=n.type==='note'?190:158,nh2=nH(n);
+    const nw=nodeW(n),nh2=nH(n);
     const col=n.color||'#34d399';
-    const isNote=n.type==='note';
-    if(isNote){
-      svg+=`<rect x="${nx}" y="${ny}" width="${nw}" height="${nh2}" rx="8" fill="#1a180d" stroke="#3d3610" stroke-width="1.5"/>`;
-      svg+=`<text x="${nx+10}" y="${ny+18}" font-size="11" fill="#c5b040">${eh(n.noteText||'')}</text>`;
+    if(n.type==='note'){
+      const nc=n.noteColor;
+      const fill=nc?nc+'22':'transparent';
+      const stroke=nc?nc+'55':'none';
+      const textCol=nc||'#c5b040';
+      svg+=`<rect x="${nx}" y="${ny}" width="${nw}" height="${nh2}" rx="8" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`;
+      const lines=(n.noteText||'').split('\n');
+      lines.forEach((line,i)=>{svg+=`<text x="${nx+10}" y="${ny+18+i*17}" font-size="11" fill="${textCol}">${eh(line)}</text>`;});
+    } else if(n.type==='proscons'){
+      const pi=n.prosItems||{pros:[],cons:[]};
+      svg+=`<rect x="${nx}" y="${ny}" width="${nw}" height="${nh2}" rx="8" fill="#181b24" stroke="#2e3245" stroke-width="1.5"/>`;
+      svg+=`<text x="${nx+10}" y="${ny+16}" font-size="10" font-weight="600" fill="#9ca3af">${eh(n.label||'Pros / Cons')}</text>`;
+      svg+=`<line x1="${nx+nw/2}" y1="${ny+24}" x2="${nx+nw/2}" y2="${ny+nh2-6}" stroke="#2e3245" stroke-width="1"/>`;
+      svg+=`<line x1="${nx}" y1="${ny+24}" x2="${nx+nw}" y2="${ny+24}" stroke="#2e3245" stroke-width="1"/>`;
+      svg+=`<text x="${nx+10}" y="${ny+36}" font-size="9" font-weight="600" fill="#6ee7b7">Pros</text>`;
+      svg+=`<text x="${nx+nw/2+6}" y="${ny+36}" font-size="9" font-weight="600" fill="#fca5a5">Cons</text>`;
+      pi.pros.forEach((t,i)=>{svg+=`<text x="${nx+10}" y="${ny+50+i*16}" font-size="9" fill="#9ca3af">+ ${eh(t)}</text>`;});
+      pi.cons.forEach((t,i)=>{svg+=`<text x="${nx+nw/2+6}" y="${ny+50+i*16}" font-size="9" fill="#9ca3af">- ${eh(t)}</text>`;});
     } else {
+      if(n.multi){svg+=`<rect x="${nx-6}" y="${ny-6}" width="${nw}" height="${nh2}" rx="8" fill="#181b24" stroke="#2e3245" stroke-width="1" opacity="0.4"/>`;svg+=`<rect x="${nx-3}" y="${ny-3}" width="${nw}" height="${nh2}" rx="8" fill="#181b24" stroke="#2e3245" stroke-width="1" opacity="0.6"/>`;}
       svg+=`<rect x="${nx}" y="${ny}" width="${nw}" height="${nh2}" rx="8" fill="#181b24" stroke="#2e3245" stroke-width="1.5"/>`;
       svg+=`<rect x="${nx}" y="${ny}" width="3" height="${nh2}" rx="2" fill="${col}"/>`;
+      if(n.multi){svg+=`<text x="${nx+8}" y="${ny+10}" font-size="7" font-weight="600" fill="#6b7280">✦ CLUSTER</text>`;}
       svg+=`<text x="${nx+22}" y="${ny+17}" font-size="11" font-weight="600" fill="#e8ecf4">${eh(n.emoji||'')} ${eh(n.label)}</text>`;
       const pe=Object.entries(n.props||{});
       const pillColors=['#93b4fd','#6ee7b7','#fca96a','#c4b5fd','#f9a8d4','#67e8f9'];
